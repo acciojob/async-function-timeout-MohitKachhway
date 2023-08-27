@@ -1,26 +1,18 @@
-// //your JS code here. If required.
-// let form = document.querySelector("form");
-// form.addListener("submit",()=>{
-// 	event.preventDefault();
-// let text = document.getElementById("text");
-// let delay = document.getElementById("delay");
-// let output = document.getElementById("output");
-// setTimeout(()=>{
-// 	output.textContent=text.value;
-// },delay.value);
+document.getElementById("btn").addEventListener("click", printText);
+
+async function printText(){
 	
-// })
-let form = document.querySelector("form");
-form.addEventListener("submit", (event) => {
-  event.preventDefault(); // Prevent the default form submission behavior
+	const textInput = document.getElementById("text").value;
+	const delayInput = document.getElementById("delay").value;
 
-  let text = document.getElementById("text");
-  let delay = document.getElementById("delay");
-  let output = document.getElementById("output");
+	const delayMilliseconds = delayInput * 1000;
 
-  setTimeout(() => {
-    output.textContent = text.value;
-  }, parseInt(delay.value));
-});
+	await new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			resolve();
+		},delayMilliseconds)
+	});
 
+	document.getElementById("output").innerText = textInput;
 
+}
